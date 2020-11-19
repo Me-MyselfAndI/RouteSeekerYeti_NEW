@@ -1,4 +1,3 @@
-This repository is no longer used since November 18, 2020. The project was moved to the new repository. Follow https://github.com/Me-MyselfAndI/RouteSeekerYeti_NEW
 ------
 
 
