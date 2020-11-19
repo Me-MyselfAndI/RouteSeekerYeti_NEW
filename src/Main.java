@@ -200,7 +200,7 @@ public class Main {
 
 
         AlliedRobot[] allies = new AlliedRobot[2];
-        allies[0] = new AlliedRobot(field, "4290", 3, 1);
+        allies[0] = new AlliedRobot(field, "4290_1", 3, 1);
         allies[1] = allies[0];
 
         for (int trial = 1; trial <= amountOfTrials; ++trial) {

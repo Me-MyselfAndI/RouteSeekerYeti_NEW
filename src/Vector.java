@@ -1,5 +1,3 @@
-
-
 public class Vector {
     double x, y;
 
