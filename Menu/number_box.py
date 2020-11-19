@@ -1,5 +1,5 @@
 import pygame
-from Menu.button import Button
+from button import Button
 
 BLACK = (10, 10, 10)
 WHITE = (255, 255, 255)

@@ -9,9 +9,11 @@ GREEN_LIT = (80, 160, 80)
 GREEN = (80, 120, 80)
 YELLOW = (100, 100, 50)
 BLACK = (10, 10, 10)
+PURPLE = (170, 80, 170)
+PURPLE_LIT = (200, 100, 200)
 
 class Cell:
-    def __init__ (self, x, y, width, height, type = 'c'):
+    def __init__ (self, x, y, width, height, type = ' '):
         self.x, self.y, self.type = x, y, type
         self.width, self.height = width, height
 
@@ -20,7 +22,7 @@ class Cell:
         self.DEFAULT_TYPE = self.type
 
     def display (self, win):
-        if self.type == 'c':
+        if self.type == ' ':
             color = YETI_BLUE_LIT if self.lit else YETI_BLUE
         elif self.type == 'w':
             color = BLACK
@@ -28,6 +30,8 @@ class Cell:
             color = RED_LIT if self.lit else RED
         elif self.type == 's':
             color = GREEN_LIT if self.lit else GREEN
+        elif self.type == 'i':
+            color = PURPLE_LIT if self.lit else PURPLE
         else:
             print ("\t!!ALERT!!\nWrong definition of a cell:", self.x, self.y)
             color = YELLOW

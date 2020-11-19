@@ -10,7 +10,7 @@ public class AlliedRobot {
     private final double marginOfTimeError = 3;
     private final double defaultTactTime = 1.0;
     ArrayList <AllieSequenceRecord> sequence;
-    double avgVel, shootingTime;
+    double avgVel, shootingTime, loadingTime;
 
     public AlliedRobot (Cell[][] field, String teamNum, int cargo, double... tactTimeHolder) {
         this.field = field;
@@ -24,9 +24,9 @@ public class AlliedRobot {
         catch (Exception ignored) {}
         String currLine;
 
-        in.nextInt();                   // This skips the team number.
         avgVel = in.nextDouble();       // Reads average velocity
         shootingTime = in.nextDouble(); // Reads shooting time
+        loadingTime = in.nextDouble();
 
         sequence = new ArrayList<AllieSequenceRecord>();    // Creates the sequence
 
@@ -55,12 +55,17 @@ public class AlliedRobot {
             }
 
             sequence.add(new AllieSequenceRecord(field[coords[1]][coords[0]], cargo));  // Add this to the sequence log
-
-            // System.out.println(coords[0] + ", " + coords[1] + " " + action);    // Print out the result
+            //System.out.println(coords[0] + ", " + coords[1] + " " + action);    // Print out the result
         }
+
+
+        System.out.println(avgVel);
+        System.out.println(shootingTime);
+        System.out.println(loadingTime);
 
         double time = 0;                                    // Sets a time counter. Will record timestamps at every cell
         sequence.get(0).time = 0;                           // Timestamp for the 0th term of the sequence
+
         for (int i = 1; i < sequence.size(); ++i) {
             AllieSequenceRecord prevNode = sequence.get(i-1), currNode = sequence.get(i);   // Determines prevNode and currNode
             time += Math.sqrt (Math.pow(currNode.cell.x - prevNode.cell.x, 2) +

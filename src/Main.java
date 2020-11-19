@@ -14,8 +14,80 @@ public class Main {
     public static double probabilisticConstant = 1.2;   // This determines how much influence probability vector has.
                                                         // See Robot.probabilisticAcceleration for more
 
+    static String[] fieldScheme = {"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "www                                      i      sssssss   wwwww",
+            "www                                      i     ssssssss   wwwww",
+            "www                                      i   sssssssssss  wwwww",
+            "www                                      i  sssssssssssss wwwww",
+            "www                                      i  sssssssssssss wwwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssssswwww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssss www",
+            "www                        www           i ssssssssssssssss www",
+            "www                        www           i ssssssssssssssss www",
+            "www                        www           i  sssssssssssssss www",
+            "www                                      i  sssssssssssssss www",
+            "www                                      i   sssssssssssss  www",
+            "www                                      i    ssssssssssss  www",
+            "www                                      i     sssssssssss  www",
+            "www                                      i       sssssssss  www",
+            "www                                      i         sssssss  www",
+            "www                                      i         sssssss  www",
+            "www                                      i          sss     www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                www                   i                 wwww",
+            "www                www                   i                 wwww",
+            "www                www                   i                 wwww",
+            "www                wwww                  i                 wwww",
+            "www                                      i                 wwww",
+            "www                    l                 i                wwwww",
+            "www  l         l                         i                wwwww",
+            "www                    l                 i                wwwww",
+            "www                                      i                wwwww",
+            "www                                      i                wwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+    };
 
-    static Cell[][] field = {        // w = Wall/obstacle;    l = Loading station;    s = suitable to Shoot;     i = Initiation line
+    private static Cell [][] createField (String[] fieldScheme) {   // !THE FIELD HAS TO BE HORIZONTAL HERE! THE FUNCTION WILL TURN IT AROUND!
+        Cell[][] field = new Cell[fieldScheme[0].length()][fieldScheme.length];
+        for (int i = 0; i < fieldScheme.length; ++i) {
+            for (int j = 0; j < fieldScheme[i].length(); ++j) {
+                field[j][i] = new Cell("" + fieldScheme[i].charAt(j));
+            }
+        }
+        for (int i = 0; i < field.length; ++i) {
+            System.out.print(i + "\t");
+            for (int j = 0; j < field[i].length; ++j) {
+                System.out.print(field[i][j]);
+            }
+            System.out.println("");
+        }
+
+        return field;
+    }
+
+    static Cell[][] oldField = {        // w = Wall/obstacle;    l = Loading station;    s = suitable to Shoot;     i = Initiation line
             {new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w")},
             {new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w")},
             {new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w")},
@@ -81,6 +153,7 @@ public class Main {
             {new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w"), new Cell("w")},
     };
 
+    static Cell[][] field = oldField/*createField(fieldScheme)*/;
 
     /**
      * This whole thing is a mini-AI for picking the best starting point, based on Q-Learning.
@@ -166,8 +239,11 @@ public class Main {
         }
 
         int initLine = 0;              // This needs to be outside of the loop, in order to be accessible later
-        for (; initLine < field.length && field[initLine][field[0].length/2].type != "i"; ++initLine);  // This finds initLine
 
+        for (; initLine < field.length && !field[initLine][field[0].length/2].type.equals("i"); ++initLine)  // This finds initLine
+        {
+            System.out.println(" " + initLine + " " + field[initLine][field[0].length/2].type.equals("i"));
+        }
 
         double bestScore = -1;      // This stores the best achieved score out of all trials
         ArrayList<RobotSequenceRecord> bestSequence = new ArrayList<>();   // This stores the sequence that achieved best possible score

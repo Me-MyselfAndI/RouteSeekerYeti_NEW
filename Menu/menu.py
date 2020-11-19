@@ -1,7 +1,7 @@
 import pygame
-from Menu.cell import Cell
-from Menu.button import Button
-from Menu.number_box import NumberBox
+from cell import Cell
+from button import Button
+from number_box import NumberBox
 
 win = pygame.display.set_mode((1700, 880))
 pygame.init()
@@ -14,17 +14,79 @@ WHITE = (255, 255, 255)
 win.fill (WHITE)
 
 
-cells_amount = (108, 53)
 cell_width = 14
 cell_height = 11
 cells_offset = [45, 20, 1]  # x-offset; y-offset; offset btw cells
 
 
+cells_scheme = ["wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "www                                      i      sssssss   wwwww",
+            "www                                      i     ssssssss   wwwww",
+            "www                                      i   sssssssssss  wwwww",
+            "www                                      i  sssssssssssss wwwww",
+            "www                                      i  sssssssssssss wwwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssss wwww",
+            "www                                      i sssssssssssssssswwww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssssswww",
+            "www                                      i ssssssssssssssss www",
+            "www                        www           i ssssssssssssssss www",
+            "www                        www           i ssssssssssssssss www",
+            "www                        www           i  sssssssssssssss www",
+            "www                                      i  sssssssssssssss www",
+            "www                                      i   sssssssssssss  www",
+            "www                                      i    ssssssssssss  www",
+            "www                                      i     sssssssssss  www",
+            "www                                      i       sssssssss  www",
+            "www                                      i         sssssss  www",
+            "www                                      i         sssssss  www",
+            "www                                      i          sss     www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                                      i                  www",
+            "www                www                   i                 wwww",
+            "www                www                   i                 wwww",
+            "www                www                   i                 wwww",
+            "www                wwww                  i                 wwww",
+            "www                                      i                 wwww",
+            "www                    l                 i                wwwww",
+            "www  l         l                         i                wwwww",
+            "www                    l                 i                wwwww",
+            "www                                      i                wwwww",
+            "www                                      i                wwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+    ]
 cells = []
-for i in range (cells_amount[0]):
+
+
+
+
+for i in range(len(cells_scheme[0])):
     cells.append([])
-    for j in range (cells_amount[1]):
-        cells[i].append(Cell(cells_offset[0] + (cells_offset[2]+cell_width)*i, cells_offset[1] + (cells_offset[2]+cell_height)*j, cell_width, cell_height, 'c'))
+    for j in range(len(cells_scheme)):
+        i_reversed = len(cells_scheme[0]) - 1 - i
+        symbol = ' ' if cells_scheme[j][i_reversed] == 's' else cells_scheme[j][i_reversed]
+        cells[i].append(Cell(cells_offset[0] + (cells_offset[2]+cell_width)*i, cells_offset[1] + (cells_offset[2]+cell_height)*j, cell_width, cell_height, symbol))
+
+#cells_amount = (108, 53)
+cells_amount = (len(cells), len(cells[0]))
 
 allie_sequence = []
 
@@ -33,7 +95,7 @@ def set_point (cell_index_x, cell_index_y):
     allie_sequence.append ([cell_index_y, cell_index_x])    # Reverse order because the main program has the map vertically,
                                                             # and here it is horizontal
     last_cell_coords = allie_sequence[len(allie_sequence) - 1]
-    cells[last_cell_coords[1]][last_cell_coords[0]].type = 'c'
+    cells[last_cell_coords[1]][last_cell_coords[0]].type = ' '
 
 def set_loading ():
     if len(allie_sequence) > 0:
@@ -107,7 +169,7 @@ while not (done or interrupted):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 set_point(cell_index_x, cell_index_y)
-                print ("Within the board:", str([cell_index_x, cell_index_y]))
+                print ("New coordinate entered:", str([cell_index_x, cell_index_y]))
 
         # ------------------------------ Over --------------------------------- #
 
@@ -199,14 +261,15 @@ if done:
 
     file = open('Allies_strategies/' + team_number + '.txt', 'a')
 
-    file.write(team_number + ' ')
     file.write(team_speed + ' ')
     file.write(team_l_time + ' ')
     file.write(team_d_time + '\n')
 
-    for curr_coords in allie_sequence:
-        file.write('(' + str(curr_coords[0]) + ',' + str(curr_coords[1]) + ')' +(curr_coords[2] if len(curr_coords) > 2 else '') + '\n')
+    for i in range(len(allie_sequence)):
+        curr_coords = allie_sequence[i]
+        file.write('(' + str(cells_amount[0] - 1 - curr_coords[1]) + ', ' + str(curr_coords[0]) + ')' +(curr_coords[2] if len(curr_coords) > 2 else '') + '\n')
 
+    file.write ('e')
     file.close()
 
 else:
