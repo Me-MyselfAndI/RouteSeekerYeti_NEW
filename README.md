@@ -11,7 +11,7 @@ Last UPD: 11/19/2020: Added compatibility between the maps in Python and Java pa
 
 To run the path calculation, use src/Main.java (Run main())
 --
-To run the menu for path entering, use Menu/menu.py. MARK RouteSeekerYeti AS A SOURCE ROOT, and NOT Menu!! It Won't work otherwise, or will save files in a wrong destination.
+To run the menu for path entering, use Menu/menu.py.
 --
 -------
 
