@@ -6,7 +6,7 @@ WHITE = (255, 255, 255)
 
 
 class NumberBox:
-    def __init__(self, title, x, y, win, title_line2 = False, underscore_included = False):
+    def __init__(self, title, x, y, win, title_line2 = False, extra_button = False):
         self.x, self.y = x, y
         self.win = win
         self.text = ''
@@ -19,11 +19,11 @@ class NumberBox:
         def text_append (increment):
             self.text += increment
 
-        for i in range (12 if underscore_included else 11):
+        for i in range (12 if extra_button else 11):
             self.buttons.append(Button (self.x + (i % 3) * (self.button_width + self.button_offset), self.y + 65 + (int(i / 3)) * (self.button_height + self.button_offset), self.button_width, self.button_height, str(i+1), text_append))
         self.buttons[9].text = '0'
-        if underscore_included:
-            self.buttons[10].text = '_'
+        if extra_button:
+            self.buttons[10].text = extra_button
             self.buttons[11].text = 'del'
         else:
             self.buttons[10].text = 'del'

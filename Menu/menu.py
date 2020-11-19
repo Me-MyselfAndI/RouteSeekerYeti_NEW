@@ -8,6 +8,8 @@ from number_box import NumberBox
 win = pygame.display.set_mode((1700, 880))
 pygame.init()
 
+DISTANCE_UNIT = 1/2  # What fraction of 1 ft is a cell on the map? For ex., 0.5 or 0.2
+
 GREEN = (80, 120, 80)
 RED = (170, 70, 70)
 BLACK = (10, 10, 10)
@@ -130,10 +132,10 @@ win.blit(text, (cells_offset[0] + 40, (cells_offset[2] + cell_height) * cells_am
 
 font = pygame.font.SysFont('Arial', 13)
 
-team_number_box = NumberBox ('     Team Number', 400, 660, win, underscore_included=True)
-speed_box = NumberBox ('Average Speed During', 600, 660, win, title_line2='Autonomous ONLY')
-loading_time_box = NumberBox ('Average Loading Time', 800, 660, win)
-deployment_time_box = NumberBox ('Average Deployment Time', 1000, 660, win)
+team_number_box = NumberBox ('     Team Number', 400, 660, win, extra_button='_')
+speed_box = NumberBox ('Average Speed During', 600, 660, win, title_line2='Autonomous ONLY', extra_button='.')
+loading_time_box = NumberBox ('Average Loading Time', 800, 660, win, extra_button='.')
+deployment_time_box = NumberBox ('Average Deployment Time', 1000, 660, win, extra_button='.')
 
 done = False
 interrupted = False
@@ -236,12 +238,12 @@ while not (done or interrupted):
     else:       # This will execute if the loop finished without a break
         for i in range(cells_amount[0]):
             if i % 5 == 0:
-                text = font.render(str (i/2), True, (0, 0, 0))
+                text = font.render(str (i*DISTANCE_UNIT), True, (0, 0, 0))
                 win.blit(text, (cells[i][j].x - 1, cells_offset[1] - 14))
             for j in range(cells_amount[1]):
                 cells[i][j].display(win)
                 if i % 5 == 0:
-                    text = font.render(str(j/2), True, (0, 0, 0))
+                    text = font.render(str(j*DISTANCE_UNIT), True, (0, 0, 0))
                     win.blit(text, (cells_offset[0] - 25, cells[i][j].y - 2))
 
         pygame.display.update ()
@@ -258,11 +260,11 @@ pygame.quit()
 if done:
     print(allie_sequence)
     team_number = team_number_box.text
-    team_speed = speed_box.text
+    team_speed = str(float(speed_box.text) / DISTANCE_UNIT)
     team_l_time = loading_time_box.text
     team_d_time = deployment_time_box.text
 
-    file = open(str(Path(os.path.dirname(__file__)).parent) + '/RouteSeekerYeti/Allies_strategies/' + team_number + '.txt', 'a')
+    file = open(str(Path(os.path.dirname(__file__)).parent) + '/RouteSeeker/Allies_strategies/' + team_number + '.txt', 'a')
 
     file.write(team_speed + ' ')
     file.write(team_l_time + ' ')
