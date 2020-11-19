@@ -19,7 +19,7 @@ class Button:
         pygame.draw.rect(win, SHADOW_BLACK, (self.x, self.y, self.width + shadow_offset, self.height + shadow_offset))
         pygame.draw.rect(win, YETI_BLUE, (self.x, self.y, self.width, self.height))
 
-        font = pygame.font.SysFont ('Aerial', 17)
+        font = pygame.font.SysFont ('', 17)
         text = font.render(self.text, True, (0, 0, 0))
         win.blit (text, (self.x + 20, self.y + self.height/2 - 5))
 
@@ -27,7 +27,7 @@ class Button:
         pygame.draw.rect(win, SHADOW_BLACK, (self.x, self.y, self.width + shadow_offset, self.height + shadow_offset))
         pygame.draw.rect(win, YETI_BLUE_LIT, (self.x, self.y, self.width, self.height))
 
-        font = pygame.font.SysFont('Aerial', 17)
+        font = pygame.font.SysFont('', 17)
         text = font.render(self.text, True, (0, 0, 0))
         win.blit(text, (self.x + 20, self.y + self.height / 2 - 5))
 
@@ -35,6 +35,6 @@ class Button:
         pygame.draw.rect(win, WHITE, (self.x, self.y, self.width + shadow_offset, self.height + shadow_offset))
         pygame.draw.rect(win, YETI_BLUE,(self.x + shadow_offset, self.y + shadow_offset, self.width, self.height))
 
-        font = pygame.font.SysFont('Aerial', 17)
+        font = pygame.font.SysFont('', 17)
         text = font.render(self.text, True, (0, 0, 0))
         win.blit(text, (self.x+1 + 20, self.y+1 + self.height / 2 - 5))

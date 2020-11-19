@@ -1,4 +1,6 @@
-import pygame
+import os, pygame
+from pathlib import Path
+
 from cell import Cell
 from button import Button
 from number_box import NumberBox
@@ -74,10 +76,6 @@ cells_scheme = ["wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
             "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
     ]
 cells = []
-
-
-
-
 for i in range(len(cells_scheme[0])):
     cells.append([])
     for j in range(len(cells_scheme)):
@@ -139,6 +137,11 @@ deployment_time_box = NumberBox ('Average Deployment Time', 1000, 660, win)
 
 done = False
 interrupted = False
+
+
+print(Path(os.path.dirname(__file__)).parent)
+
+
 while not (done or interrupted):
     for event in pygame.event.get():
         # ------------------ Checks if the window was closed -------------------#
@@ -259,7 +262,7 @@ if done:
     team_l_time = loading_time_box.text
     team_d_time = deployment_time_box.text
 
-    file = open('Allies_strategies/' + team_number + '.txt', 'a')
+    file = open(str(Path(os.path.dirname(__file__)).parent) + '/RouteSeekerYeti/Allies_strategies/' + team_number + '.txt', 'a')
 
     file.write(team_speed + ' ')
     file.write(team_l_time + ' ')
