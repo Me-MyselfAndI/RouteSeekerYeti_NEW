@@ -5,7 +5,7 @@ generates a path that scores as much points for the autonomous as possible. Then
 This way, the robot can have as optimal of an autonomous as possible. The path generator is based on machine learning and vector algebra.
 The code is adjustable for each new year's game.
 
-Last UPD: 11/18/2020: New GUI added. No map yet
+Last UPD: 11/18/2020: New GUI added; Greatly simplified way to enter the map of the field into Java class
 
 -------
 
