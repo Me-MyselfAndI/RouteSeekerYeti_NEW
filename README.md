@@ -11,13 +11,13 @@ Last UPD: 11/18/2020: New GUI added. No map yet
 
 To run the path calculation, use src/Main.java (Run main())
 --
-To run the menu for path entering, use Menu/menu.py
+To run the menu for path entering, use Menu/menu.py. MARK RouteSeekerYeti AS A SOURCE ROOT, and NOT Menu!! It Won't work otherwise, or will save files in a wrong destination.
 --
 -------
 
-As of 8th of August, 2020, the current version:
+As of 18th of November, 2020, the current version:
  - Creates a path that avoids walls and uses an entered size of robot cell to successfully navigate on the field
- - Needs around 200,000 trials to reliably derive a strategy that scores 20 points in autonomous on a field with no other robots
+ - Takes around 200,000 trials to reliably derive a strategy that scores 20 points in autonomous on a field with no other robots
  - Has a graphic interface to enter allied robot's paths and takes these paths into consideration
  - Has simplified physics that doesn't avoid paths that may make the robot tip over
  - Outputs the strategy into a csv file that stores angles and distances that robot turns/travels from each cell to the next one.
@@ -26,12 +26,19 @@ As of 8th of August, 2020, the current version:
 
 The description of the components of the project:
 
-   Menu.py - a graphic interface to enter robot paths.
+
+   /Menu:
+   menu.py - a graphic interface to enter robot paths.
+   
+   button.py - class for a button
+   
+   number_box.py - class with a "screen" and keyboard to enter team number, speed, etc.
+   
+   cell.py - class for a cell of the field
    
    RobotPath.csv - sample output of the program
    
    /src:
-    
    Cell.java - the field is broken into square sections called cells. Each cell is an instance of Cell class.
     
    Vector.java - a class that works with vectors. This class also contains methods of checking whether the way is clean.
