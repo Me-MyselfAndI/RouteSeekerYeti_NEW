@@ -21,11 +21,21 @@ public class AlliedRobot {
         try {
             String alliedPathSource = System.getProperty("user.dir");
             System.out.println("Working Directory: " + alliedPathSource + "\n\n");
-            File alliedPathFile = new File (alliedPathSource + "\\RouteSeeker\\Allies_strategies\\" + teamNum + ".txt");
+            File alliedPathFile = new File (alliedPathSource + "\\Allies_strategies\\" + teamNum + ".txt");
             in = new Scanner(alliedPathFile);
+            System.out.println(alliedPathFile.toString());
         }
         catch (Exception E) {
-            System.out.println("\u001b[31mFile not found");
+            try {
+                String alliedPathSource = System.getProperty("user.dir");
+                System.out.println("Working Directory: " + alliedPathSource + "\n\n");
+                File alliedPathFile = new File (alliedPathSource + "\\RouteSeeker\\Allies_strategies\\" + teamNum + ".txt");
+                in = new Scanner(alliedPathFile);
+                System.out.println(alliedPathFile.toString());
+            }
+            catch (Exception E1) {
+                System.out.println("\u001b[31mFile not found");
+            }
         }
         String currLine;
 
