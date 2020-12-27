@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
-
+    final static String[] allieTeamNum = {"4290_1", "3350"};
     final static int amountOfTrials = 300000;
     final static double cargoConstant = 1.2;   // Strategic value of having one more cargo
     final static double matchTime = 15;        // Match time in seconds
@@ -15,7 +15,8 @@ public class Main {
     public static double probabilisticConstant = 1.2;   // This determines how much influence probability vector has.
     // See Robot.probabilisticAcceleration for more
 
-    static String[] fieldScheme = {"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+    static String[] fieldScheme = {
+            "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
             "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
             "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
             "www                                      i      sssssss   wwwww",
@@ -243,7 +244,7 @@ public class Main {
 
         for (; initLine < field.length && !field[initLine][field[0].length/2].type.equals("i"); ++initLine)  // This finds initLine
         {
-            System.out.println(" " + initLine + " " + field[initLine][field[0].length/2].type.equals("i"));
+            //System.out.println(" " + initLine + " " + field[initLine][field[0].length/2].type.equals("i"));
         }
 
         double bestScore = -1;      // This stores the best achieved score out of all trials
@@ -277,8 +278,8 @@ public class Main {
 
 
         AlliedRobot[] allies = new AlliedRobot[2];
-        allies[0] = new AlliedRobot(field, "4290_1", 3, 1);
-        allies[1] = allies[0];
+        allies[0] = new AlliedRobot(field, allieTeamNum[0], 3, 1);
+        allies[1] = new AlliedRobot(field, allieTeamNum[1], 3, 1);
 
         for (int trial = 1; trial <= amountOfTrials; ++trial) {
             for (int i = 0; i < trial % 20; ++i)

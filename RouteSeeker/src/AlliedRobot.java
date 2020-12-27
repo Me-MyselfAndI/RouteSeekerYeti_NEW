@@ -19,11 +19,17 @@ public class AlliedRobot {
 
         Scanner in = new Scanner("");
         try {
-            in = new Scanner(new File("Allies_strategies/" + teamNum + ".txt"));
+            String alliedPathSource = System.getProperty("user.dir");
+            System.out.println("Working Directory: " + alliedPathSource + "\n\n");
+            File alliedPathFile = new File (alliedPathSource + "\\RouteSeeker\\Allies_strategies\\" + teamNum + ".txt");
+            in = new Scanner(alliedPathFile);
         }
-        catch (Exception ignored) {}
+        catch (Exception E) {
+            System.out.println("\u001b[31mFile not found");
+        }
         String currLine;
 
+        // System.out.println (in.nextLine());
         avgVel = in.nextDouble();       // Reads average velocity
         shootingTime = in.nextDouble(); // Reads shooting time
         loadingTime = in.nextDouble();
@@ -57,7 +63,6 @@ public class AlliedRobot {
             sequence.add(new AllieSequenceRecord(field[coords[1]][coords[0]], cargo));  // Add this to the sequence log
             //System.out.println(coords[0] + ", " + coords[1] + " " + action);    // Print out the result
         }
-
 
         System.out.println(avgVel);
         System.out.println(shootingTime);
