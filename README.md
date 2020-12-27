@@ -11,7 +11,7 @@ Last UPD: 11/19/2020: Added compatibility between the maps in Python and Java pa
 
 To run the path calculation, use src/Main.java (Run main())
 --
-To run the menu for path entering, use Menu/menu.py.
+To run the menu for path entering, use Menu/menu.py. You will need to download the Pygame module; follow these steps: https://www.youtube.com/watch?v=EKjALzLLgVs
 --
 -------
 
