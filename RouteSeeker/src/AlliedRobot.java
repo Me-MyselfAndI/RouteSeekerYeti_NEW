@@ -63,8 +63,11 @@ public class AlliedRobot {
             }
             if (scannedLine.hasNext()) {            // If possible, move on to the next symbol - that is the action of this cell
                 action = scannedLine.next();        //
-                if (action.equals("l"))
-                    cargo ++;
+                if (action.equals("l")) {
+                    cargo++;
+                    if (field[coords[1]][coords[0]].type.equals("l"))
+                        field[coords[1]][coords[0]].type = " ";
+                }
                 else if (action.equals("s")) {
                     cargo = 0;
                 }
@@ -187,7 +190,7 @@ public class AlliedRobot {
 
         // Enable the following if you suspect that this function isn't working properly.
         // Look at when and where the allie paths are marked
-        /*for (int i = 0; i < field.length; ++i) {
+        /* for (int i = 0; i < field.length; ++i) {
             for (int j = 0; j < field[i].length; ++j)
                 System.out.print(field[i][j]);
             System.out.println();
