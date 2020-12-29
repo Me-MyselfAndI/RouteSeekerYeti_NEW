@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
-    final static String[] allieTeamNum = {"4290_1", "3350"};
+    final static String[] allieTeamNum = {"3350", "4290_1"};
     final static int amountOfTrials = 100000;
     final static double cargoConstant = 1.2;   // Strategic value of having one more cargo
     final static double matchTime = 15;        // Match time in seconds
     final static int tactAmount = 15;    // This is how many tacts there are in one match. IF YOU ARE CHZNGING THIS< ALSO CHANGE IN CELL.JAVA
     final static double wallConstant = 0.05;    // The greater is this constant, the more ML points robot loses for bumping into a wall
     final static double maxAcc = 20;        // Maximum acceleration the robot can attain ### MEASURED IN CELLS / s^2 ###
-    final static double distanceUnit = 1/2; // What fraction of a foot is 1 cell on the map
+    final static double distanceUnit = 1.0/2.0; // What fraction of a foot is 1 cell on the map
 
 
     public static double probabilisticConstant = 1.2;   // This determines how much influence probability vector has.
@@ -391,7 +391,8 @@ public class Main {
         File file = new File("RobotPath.csv");  // This will be the file for output
         file.createNewFile();
         FileWriter output = new FileWriter(file);
-
+        output.append("Starting position:\n" + (((double) bestSequence.get(0).cell.x * distanceUnit) + ", " + ((double) bestSequence.get(0).cell.y * distanceUnit)) +"\n\n");
+        System.out.println("\nStarting position: " + (((double) bestSequence.get(0).cell.x) + ", " + ((double) bestSequence.get(0).cell.y)) +"\n");
         output.append("Move #\tAngle (radians)\tDistance(ft)\n");    // This is the hat of the table
 
         Vector prevDisplacement = new Vector(1, Math.PI/2);     // This will store the vector of previous (last move)
@@ -404,10 +405,10 @@ public class Main {
             // the same as in polar circle: CCW is positive, CW is negative
             double distance = currDisplacement.getValue();  // Gets the distance between current and next cells
 
-            System.out.println("Move #" + (i+1) + ":\n\tAngle: " + Math.round(angle*180/Math.PI) + " degrees\n\tDistance: " + distance * distanceUnit);
+            System.out.println("Move #" + (i+1) + ":\n\tAngle: " + Math.round(angle*180/Math.PI) + " degrees\n\tDistance: " + (distance * distanceUnit));
             // Output for a programmer to see
 
-            output.append(i + "\t" + angle + "\t" + distance + "\n");
+            output.append(i + "\t" + angle + "\t" + (distance * distanceUnit) + "\n");
             // Output for the computer into the CSV file. NOTE THAT THE ANGLE HERE IS IN RADIANS
 
             prevDisplacement = currDisplacement;    // Assigns current displacement into previous displacement
