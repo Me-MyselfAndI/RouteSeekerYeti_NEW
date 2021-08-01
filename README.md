@@ -19,7 +19,7 @@ As of 18th of November, 2020, the current version:
  - Creates a path that avoids walls and uses an entered size of robot cell to successfully navigate on the field
  - Takes around 200,000 trials to reliably derive a strategy that scores 20 points in autonomous on a field with no other robots
  - Has a graphic interface to enter allied robot's paths and takes these paths into consideration
- - Has simplified physics that doesn't avoid paths that may make the robot tip over
+ - Has simplified physics that doesn't avoid paths that may theoretically make the robot tip over. This needs to be modified according to the robot's dimensions
  - Outputs the strategy into a csv file that stores angles and distances that robot turns/travels from each cell to the next one.
 
 -------
