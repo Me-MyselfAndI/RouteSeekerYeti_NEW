@@ -70,7 +70,8 @@ point in best possible directions (or at least get to a local maximum of posible
       
 This project belongs to the FRC Team 3506 Yeti Robotics.
 
-Designed by Grigorii Podoksik
+Designed by Grigorii (Harvie) Podoksik
+
 Idea of Caedmon McGinn and Grigorii Podoksik
 
 
