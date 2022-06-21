@@ -1,9 +1,9 @@
 # RouteSeeker_Yeti
 
-This RouteSeeker project is an autonomous generator of autonomous strategy: depending on the actions of our allies, this code 
-generates a path that scores as much points for the autonomous as possible. Then, it translates that strategy into the robot code. 
-This way, the robot can have as optimal of an autonomous as possible. The path generator is based on machine learning and vector algebra.
-The code is adjustable for each new year's game.
+This RouteSeeker project is an AI for generation of autonomous strategy in FIRST Robotics Competition: depending on the actions of our allies, this code 
+generates a path that scores as much points for the autonomous period as possible. Then, it translates that strategy into the robot code. The path generator 
+is based on reinforcement learning principles.
+The code is easily adjustable for each new year's game.
 
 Last UPD: 11/19/2020: Added compatibility between the maps in Python and Java parts of the code. Now, only one scheme of the field is needed. 
 
@@ -16,10 +16,10 @@ To run the menu for path entering, use Menu/menu.py. You will need to download t
 -------
 
 As of 18th of November, 2020, the current version:
- - Creates a path that avoids walls and uses an entered size of robot cell to successfully navigate on the field
- - Takes around 200,000 trials to reliably derive a strategy that scores 20 points in autonomous on a field with no other robots
+ - Creates a path that avoids walls and uses the entered size of a robot cell to safely navigate on the field
+ - Takes around 200,000 trials to reliably derive a strategy that scores 20 points in autonomous on a field with no other robots (2020 game rules)
  - Has a graphic interface to enter allied robot's paths and takes these paths into consideration
- - Has simplified physics that doesn't avoid paths that may theoretically make the robot tip over. This needs to be modified according to the robot's dimensions
+ - Has simplified physics that doesn't avoid paths that may make the robot flip over. This needs to be modified according to the robot's dimensions
  - Outputs the strategy into a csv file that stores angles and distances that robot turns/travels from each cell to the next one.
 
 -------
